@@ -20,7 +20,5 @@ $form.addEventListener('submit', function (event) {
   data.entries.unshift(entry);
 
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $title.value = '';
-  $url.value = '';
-  $notes.value = '';
+  $form.reset();
 });
