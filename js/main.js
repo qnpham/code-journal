@@ -18,7 +18,7 @@ $form.addEventListener('submit', function (event) {
   };
   entry.nextEntryId = counter;
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  data.entries[entry.nextEntryId] = entry;
+  data.entries.unshift(entry);
   $title.value = '';
   $url.value = '';
   $notes.value = '';
