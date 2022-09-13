@@ -16,11 +16,10 @@ $form.addEventListener('submit', function (event) {
     notes: $notes.value,
     nextEntryId: 0
   };
-  entry.nextEntryId = counter;
+  entry.nextEntryId = ++counter;
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   data.entries.unshift(entry);
   $title.value = '';
   $url.value = '';
   $notes.value = '';
-  counter++;
 });
