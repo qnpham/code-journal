@@ -6,7 +6,6 @@ var $notes = document.querySelector('#notes');
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
-var counter = 0;
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -14,11 +13,13 @@ $form.addEventListener('submit', function (event) {
     title: $title.value,
     url: $url.value,
     notes: $notes.value,
-    nextEntryId: 0
+    nextEntryId: data.nextEntryId
   };
-  entry.nextEntryId = ++counter;
-  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+
+  data.nextEntryId++;
   data.entries.unshift(entry);
+
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $title.value = '';
   $url.value = '';
   $notes.value = '';
