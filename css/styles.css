@@ -4,6 +4,7 @@
 
 body {
   font-family: "Source Sans Pro", sans-serif;
+  background-color: #f0f0f0;
 }
 
 label,
@@ -14,7 +15,6 @@ input {
 
 .card {
   width: 100%;
-  background-color: #f0f0f0;
   justify-content: center;
   align-items: center;
   display: inline-block;
@@ -28,7 +28,7 @@ input {
 .bar {
   background-color: #552b81;
   color: white;
-  padding: 0.3rem 0.5rem;
+  padding: 0.7rem;
 }
 
 h3 {
