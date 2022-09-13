@@ -13,7 +13,7 @@ $form.addEventListener('submit', function (event) {
     title: $title.value,
     url: $url.value,
     notes: $notes.value,
-    nextEntryId: data.nextEntryId
+    entryId: data.nextEntryId
   };
 
   data.nextEntryId++;
