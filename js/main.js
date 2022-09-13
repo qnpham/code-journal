@@ -6,14 +6,21 @@ var $notes = document.querySelector('#notes');
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
+var counter = 0;
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
-  var object = {
+  var entry = {
     title: $title.value,
     url: $url.value,
     notes: $notes.value,
     nextEntryId: 0
   };
-  object.nextEntryId = object.nextEntryId + 1;
+  entry.nextEntryId = counter;
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  data.entries[entry.nextEntryId] = entry;
+  $title.value = '';
+  $url.value = '';
+  $notes.value = '';
+  counter++;
 });
