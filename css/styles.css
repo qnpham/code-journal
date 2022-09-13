@@ -31,12 +31,18 @@ header {
 h2 {
   font-size: 1rem;
   font-weight: 400;
+  display: inline-block;
 }
 
 h3 {
   margin-top: 0.75rem;
   font-weight: 600;
   font-size: 1.45rem;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.15rem;
 }
 
 img {
@@ -88,8 +94,22 @@ textarea:focus {
   outline: 1px solid #552b81;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding-bottom: 2rem;
+}
+
 @media only screen and (min-width: 768px) {
   .title {
     padding-top: 0;
+  }
+
+  .entry-image-container {
+    width: 75%;
+    margin: auto;
   }
 }
