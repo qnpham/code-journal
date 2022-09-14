@@ -26,6 +26,8 @@ $form.addEventListener('submit', function (event) {
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
 
+  $ul.prepend(createDom(entry));
+
   $entryForm.classList.add('hidden');
   $entries.classList.remove('hidden');
 });
