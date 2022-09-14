@@ -116,11 +116,18 @@ $entriesNav.addEventListener('click', function () {
 $ul.addEventListener('click', function (event) {
   if (event.target.tagName !== 'I') return;
   $entryForm.classList.remove('hidden');
+  $entries.classList.add('hidden');
+
   var id = event.target.closest('li').getAttribute('data-entry-id');
 
   for (var i = 0; i < data.entries.length; i++) {
     if (Number(id) === data.entries[i].entryId) {
       data.editing = data.entries[i];
+
+      $title.value = data.editing.title;
+      $url.value = data.editing.url;
+      $img.setAttribute('src', data.editing.url);
+      $notes.value = data.editing.notes;
     }
   }
 });
