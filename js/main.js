@@ -113,4 +113,7 @@ $entriesNav.addEventListener('click', function () {
 });
 
 $ul.addEventListener('click', function (event) {
+  if (event.target.tagName === 'I') {
+    $entryForm.classList.remove('hidden');
+  }
 });
