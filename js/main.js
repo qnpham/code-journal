@@ -68,9 +68,15 @@ function createDom(entry) {
   var columnHalf2 = makeChild('div', 'class', 'column-half');
   row.appendChild(columnHalf2);
 
+  var middleContent = makeChild('div', 'class', 'middle-content row');
+  columnHalf2.appendChild(middleContent);
+
   var h4 = document.createElement('h4');
   h4.textContent = entry.title;
-  columnHalf2.appendChild(h4);
+  middleContent.appendChild(h4);
+
+  var icon = makeChild('i', 'class', 'fa-solid fa-pen');
+  middleContent.appendChild(icon);
 
   var p = document.createElement('p');
   p.textContent = entry.notes;
