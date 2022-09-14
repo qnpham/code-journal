@@ -114,7 +114,13 @@ $entriesNav.addEventListener('click', function () {
 });
 
 $ul.addEventListener('click', function (event) {
-  if (event.target.tagName === 'I') {
-    $entryForm.classList.remove('hidden');
+  if (event.target.tagName !== 'I') return;
+  $entryForm.classList.remove('hidden');
+  var id = event.target.closest('li').getAttribute('data-entry-id');
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (Number(id) === data.entries[i].entryId) {
+      data.editing = data.entries[i];
+    }
   }
 });
