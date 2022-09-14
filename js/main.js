@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 var $form = document.querySelector('form');
 var $img = document.querySelector('img');
 var $title = document.querySelector('#title');
@@ -30,6 +31,8 @@ $form.addEventListener('submit', function (event) {
 
   $entryForm.classList.add('hidden');
   $entries.classList.remove('hidden');
+  hiddenOn.form = true;
+  hiddenOn.entries = false;
 });
 
 function createDom(entry) {
@@ -71,9 +74,18 @@ window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     $ul.append(createDom(data.entries[i]));
   }
+  if (hiddenOn.form === true) {
+    $entryForm.classList.add('hidden');
+    $entries.classList.remove('hidden');
+  } else if (hiddenOn.entries === true) {
+    $entryForm.classList.remove('hidden');
+    $entries.classList.add('hidden');
+  }
 });
 
 $newBtn.addEventListener('click', function (event) {
   $entryForm.classList.remove('hidden');
   $entries.classList.add('hidden');
+  hiddenOn.form = false;
+  hiddenOn.entries = true;
 });
