@@ -111,3 +111,6 @@ $entriesNav.addEventListener('click', function () {
   data.view = 'entries';
   checkEntries();
 });
+
+$ul.addEventListener('click', function (event) {
+});
