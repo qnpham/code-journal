@@ -3,6 +3,8 @@ var $img = document.querySelector('img');
 var $title = document.querySelector('#title');
 var $url = document.querySelector('#url');
 var $notes = document.querySelector('#notes');
+var $ul = document.querySelector('ul');
+
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
@@ -57,4 +59,9 @@ function createDom(entry) {
 
   return li;
 }
-createDom();
+
+window.addEventListener('DOMContentLoaded', function (event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    $ul.appendChild(createDom(data.entries[i]));
+  }
+});
