@@ -46,6 +46,7 @@ $form.addEventListener('submit', function (event) {
 
 function createDom(entry) {
   var li = document.createElement('li');
+  li.setAttribute('data-entry-id', entry.entryId);
 
   function makeChild(tagName, attr, attrValue) {
     var element = document.createElement(tagName);
