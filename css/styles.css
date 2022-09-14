@@ -110,6 +110,19 @@ a {
   padding-left: 0.5rem;
 }
 
+.upper-text {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.anchor-button {
+  padding: 0.5rem;
+  border: 1px solid;
+  font-size: 0.7rem;
+  background-color: #542b80;
+  border-radius: 5px;
+}
+
 @media only screen and (min-width: 768px) {
   .title {
     padding-top: 0;
