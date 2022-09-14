@@ -4,7 +4,9 @@ var $title = document.querySelector('#title');
 var $url = document.querySelector('#url');
 var $notes = document.querySelector('#notes');
 var $ul = document.querySelector('ul');
-
+var $newBtn = document.querySelector('#new-button');
+var $entryForm = document.querySelector("[data-view='entry-form']");
+var $entries = document.querySelector("[data-view='entries']");
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
@@ -23,6 +25,9 @@ $form.addEventListener('submit', function (event) {
 
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
+
+  $entryForm.classList.add('hidden');
+  $entries.classList.remove('hidden');
 });
 
 function createDom(entry) {
@@ -64,4 +69,9 @@ window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     $ul.prepend(createDom(data.entries[i]));
   }
+});
+
+$newBtn.addEventListener('click', function (event) {
+  $entryForm.classList.remove('hidden');
+  $entries.classList.add('hidden');
 });
