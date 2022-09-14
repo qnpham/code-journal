@@ -69,7 +69,7 @@ function createDom(entry) {
 
 window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
-    $ul.prepend(createDom(data.entries[i]));
+    $ul.append(createDom(data.entries[i]));
   }
 });
 
