@@ -8,9 +8,18 @@ var $newBtn = document.querySelector('#new-button');
 var $entryForm = document.querySelector("[data-view='entry-form']");
 var $entries = document.querySelector("[data-view='entries']");
 var $entriesNav = document.querySelector('#entries-nav');
+var $noEntries = document.querySelector('#no-entries');
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
+
+function checkEntries() {
+  if (data.entries.length === 0) {
+    $noEntries.classList.remove('hidden');
+  } else if (data.entries.length > 0) {
+    $noEntries.classList.add('hidden');
+  }
+}
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -32,6 +41,7 @@ $form.addEventListener('submit', function (event) {
   $entryForm.classList.add('hidden');
   $entries.classList.remove('hidden');
   data.view = 'entries';
+  checkEntries();
 });
 
 function createDom(entry) {
@@ -76,6 +86,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
   if (data.view === 'entries') {
     $entryForm.classList.add('hidden');
     $entries.classList.remove('hidden');
+    checkEntries();
   } else if (data.view === 'entry-form') {
     $entryForm.classList.remove('hidden');
     $entries.classList.add('hidden');
@@ -92,4 +103,5 @@ $entriesNav.addEventListener('click', function () {
   $entryForm.classList.add('hidden');
   $entries.classList.remove('hidden');
   data.view = 'entries';
+  checkEntries();
 });
