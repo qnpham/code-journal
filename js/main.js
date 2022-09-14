@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 var $form = document.querySelector('form');
 var $img = document.querySelector('img');
 var $title = document.querySelector('#title');
@@ -8,6 +7,7 @@ var $ul = document.querySelector('ul');
 var $newBtn = document.querySelector('#new-button');
 var $entryForm = document.querySelector("[data-view='entry-form']");
 var $entries = document.querySelector("[data-view='entries']");
+var $entriesNav = document.querySelector('#entries-nav');
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
@@ -31,8 +31,7 @@ $form.addEventListener('submit', function (event) {
 
   $entryForm.classList.add('hidden');
   $entries.classList.remove('hidden');
-  hiddenOn.form = true;
-  hiddenOn.entries = false;
+  data.view = 'entries';
 });
 
 function createDom(entry) {
@@ -74,10 +73,10 @@ window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     $ul.append(createDom(data.entries[i]));
   }
-  if (hiddenOn.form === true) {
+  if (data.view === 'entries') {
     $entryForm.classList.add('hidden');
     $entries.classList.remove('hidden');
-  } else if (hiddenOn.entries === true) {
+  } else if (data.view === 'entry-form') {
     $entryForm.classList.remove('hidden');
     $entries.classList.add('hidden');
   }
@@ -86,6 +85,11 @@ window.addEventListener('DOMContentLoaded', function (event) {
 $newBtn.addEventListener('click', function (event) {
   $entryForm.classList.remove('hidden');
   $entries.classList.add('hidden');
-  hiddenOn.form = false;
-  hiddenOn.entries = true;
+  data.view = 'entry-form';
+});
+
+$entriesNav.addEventListener('click', function () {
+  $entryForm.classList.add('hidden');
+  $entries.classList.remove('hidden');
+  data.view = 'entries';
 });
