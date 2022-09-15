@@ -177,17 +177,21 @@ i {
 }
 
 #cancel {
+  font-size: 0.9rem;
   color: #292929;
   background-color: #b6b6b6;
   padding: 0.35rem;
   border-radius: 5px;
+  float: left;
 }
 
 #confirm {
+  font-size: 0.9rem;
   background-color: #dc2625;
   color: white;
   padding: 0.35rem;
   border-radius: 5px;
+  float: right;
 }
 
 .display-inline {
@@ -196,6 +200,18 @@ i {
 
 header .column-half {
   width: 160px;
+}
+
+#modal-text {
+  padding-top: 0.5rem;
+  font-size: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.buttons {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }
 
 @media only screen and (min-width: 768px) {
