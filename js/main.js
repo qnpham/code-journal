@@ -33,7 +33,8 @@ $form.addEventListener('submit', function (event) {
           }
         }
       }
-    } data.editing = null;
+    }
+    data.editing = null;
   } else if (data.editing == null) {
     data.nextEntryId++;
     data.entries.unshift(entry);
@@ -120,7 +121,7 @@ $entriesNav.addEventListener('click', function () {
 function checkEntries() {
   if (data.entries.length === 0) {
     $noEntries.classList.remove('hidden');
-  } else if (data.entries.length > 0) {
+  } else {
     $noEntries.classList.add('hidden');
   }
 }
