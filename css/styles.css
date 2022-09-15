@@ -81,7 +81,6 @@ input {
   padding-top: 4px;
   border-radius: 3px;
   float: right;
-  margin-top: 0.5rem;
 }
 
 textarea {
@@ -134,6 +133,23 @@ a {
 
 i {
   color: #542b80;
+}
+
+.bottom-content {
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+#delete {
+  color: red;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.no-padding {
+  padding: 0;
 }
 
 @media only screen and (min-width: 768px) {
