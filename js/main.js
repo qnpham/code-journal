@@ -177,4 +177,9 @@ $confirm.addEventListener('click', function (event) {
     }
   }
   data.editing = null;
+  $entryForm.classList.add('hidden');
+  $entries.classList.remove('hidden');
+  data.view = 'entries';
+  $modal.classList.add('hidden');
+  checkEntries();
 });
