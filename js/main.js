@@ -13,6 +13,7 @@ var $newEdittext = document.querySelector('#new-edit-entry');
 var $delete = document.querySelector('#delete');
 var $modal = document.querySelector('.modal');
 var $cancel = document.querySelector('#cancel');
+var $confirm = document.querySelector('#confirm');
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
@@ -112,9 +113,11 @@ window.addEventListener('DOMContentLoaded', function (event) {
 $newBtn.addEventListener('click', function (event) {
   $entryForm.classList.remove('hidden');
   $entries.classList.add('hidden');
+  $form.reset();
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   data.view = 'entry-form';
   $newEdittext.textContent = 'New Entry';
-  $delete.classList.remove('hidden');
+  $delete.classList.add('hidden');
 });
 
 $entriesNav.addEventListener('click', function () {
@@ -159,4 +162,19 @@ $delete.addEventListener('click', function (event) {
 
 $cancel.addEventListener('click', function (event) {
   $modal.classList.add('hidden');
+});
+
+$confirm.addEventListener('click', function (event) {
+  var elementList = document.querySelectorAll('li');
+  for (var i = 0; i < elementList.length; i++) {
+    if (data.editing.entryId === Number(elementList[i].getAttribute('data-entry-id'))) {
+      elementList[i].remove();
+      for (var z = 0; z < data.entries.length; z++) {
+        if (data.editing.entryId === data.entries[z].entryId) {
+          data.entries.splice(z, 1);
+        }
+      }
+    }
+  }
+  data.editing = null;
 });
