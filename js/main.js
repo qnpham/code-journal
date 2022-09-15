@@ -12,6 +12,7 @@ var $noEntries = document.querySelector('#no-entries');
 var $newEdittext = document.querySelector('#new-edit-entry');
 var $delete = document.querySelector('#delete');
 var $modal = document.querySelector('.modal');
+var $cancel = document.querySelector('#cancel');
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
@@ -154,4 +155,8 @@ $ul.addEventListener('click', function (event) {
 
 $delete.addEventListener('click', function (event) {
   $modal.classList.remove('hidden');
+});
+
+$cancel.addEventListener('click', function (event) {
+  $modal.classList.add('hidden');
 });
