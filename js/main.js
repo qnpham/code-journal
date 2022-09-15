@@ -9,6 +9,7 @@ var $entryForm = document.querySelector("[data-view='entry-form']");
 var $entries = document.querySelector("[data-view='entries']");
 var $entriesNav = document.querySelector('#entries-nav');
 var $noEntries = document.querySelector('#no-entries');
+var $newEdittext = document.querySelector('#new-edit-entry');
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
@@ -109,6 +110,7 @@ $newBtn.addEventListener('click', function (event) {
   $entryForm.classList.remove('hidden');
   $entries.classList.add('hidden');
   data.view = 'entry-form';
+  $newEdittext.textContent = 'New Entry';
 });
 
 $entriesNav.addEventListener('click', function () {
@@ -130,6 +132,7 @@ $ul.addEventListener('click', function (event) {
   if (event.target.tagName !== 'I') return;
   $entryForm.classList.remove('hidden');
   $entries.classList.add('hidden');
+  $newEdittext.textContent = 'Edit Entry';
 
   var id = event.target.closest('li').getAttribute('data-entry-id');
 
