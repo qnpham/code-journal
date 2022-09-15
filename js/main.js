@@ -29,15 +29,27 @@ $form.addEventListener('submit', function (event) {
     notes: $notes.value,
     entryId: data.nextEntryId
   };
-
-  data.nextEntryId++;
-  data.entries.unshift(entry);
+  if (data.editing !== null) {
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        data.entries[i] = entry;
+        data.entries[i].entryId = data.editing.entryId;
+        var elementList = document.querySelectorAll('li');
+        for (var j = 0; j < elementList.length; j++) {
+          if (Number(elementList[j].getAttribute('data-entry-id')) === data.editing.entryId) {
+            elementList[j].replaceWith(createDom(data.entries[i]));
+          }
+        }
+      }
+    } data.editing = null;
+  } else if (data.editing == null) {
+    data.nextEntryId++;
+    data.entries.unshift(entry);
+    $ul.prepend(createDom(entry));
+  }
 
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-
-  $ul.prepend(createDom(entry));
-
   $entryForm.classList.add('hidden');
   $entries.classList.remove('hidden');
   data.view = 'entries';
