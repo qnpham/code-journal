@@ -9,17 +9,10 @@ var $entryForm = document.querySelector("[data-view='entry-form']");
 var $entries = document.querySelector("[data-view='entries']");
 var $entriesNav = document.querySelector('#entries-nav');
 var $noEntries = document.querySelector('#no-entries');
+var $newEdittext = document.querySelector('#new-edit-entry');
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
-
-function checkEntries() {
-  if (data.entries.length === 0) {
-    $noEntries.classList.remove('hidden');
-  } else if (data.entries.length > 0) {
-    $noEntries.classList.add('hidden');
-  }
-}
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -29,15 +22,28 @@ $form.addEventListener('submit', function (event) {
     notes: $notes.value,
     entryId: data.nextEntryId
   };
-
-  data.nextEntryId++;
-  data.entries.unshift(entry);
+  if (data.editing !== null) {
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        data.entries[i] = entry;
+        data.entries[i].entryId = data.editing.entryId;
+        var elementList = document.querySelectorAll('li');
+        for (var j = 0; j < elementList.length; j++) {
+          if (Number(elementList[j].getAttribute('data-entry-id')) === data.editing.entryId) {
+            elementList[j].replaceWith(createDom(data.entries[i]));
+          }
+        }
+      }
+    }
+    data.editing = null;
+  } else if (data.editing == null) {
+    data.nextEntryId++;
+    data.entries.unshift(entry);
+    $ul.prepend(createDom(entry));
+  }
 
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-
-  $ul.prepend(createDom(entry));
-
   $entryForm.classList.add('hidden');
   $entries.classList.remove('hidden');
   data.view = 'entries';
@@ -46,6 +52,7 @@ $form.addEventListener('submit', function (event) {
 
 function createDom(entry) {
   var li = document.createElement('li');
+  li.setAttribute('data-entry-id', entry.entryId);
 
   function makeChild(tagName, attr, attrValue) {
     var element = document.createElement(tagName);
@@ -68,9 +75,15 @@ function createDom(entry) {
   var columnHalf2 = makeChild('div', 'class', 'column-half');
   row.appendChild(columnHalf2);
 
+  var middleContent = makeChild('div', 'class', 'middle-content row');
+  columnHalf2.appendChild(middleContent);
+
   var h4 = document.createElement('h4');
   h4.textContent = entry.title;
-  columnHalf2.appendChild(h4);
+  middleContent.appendChild(h4);
+
+  var icon = makeChild('i', 'class', 'fa-solid fa-pen');
+  middleContent.appendChild(icon);
 
   var p = document.createElement('p');
   p.textContent = entry.notes;
@@ -97,6 +110,7 @@ $newBtn.addEventListener('click', function (event) {
   $entryForm.classList.remove('hidden');
   $entries.classList.add('hidden');
   data.view = 'entry-form';
+  $newEdittext.textContent = 'New Entry';
 });
 
 $entriesNav.addEventListener('click', function () {
@@ -104,4 +118,32 @@ $entriesNav.addEventListener('click', function () {
   $entries.classList.remove('hidden');
   data.view = 'entries';
   checkEntries();
+});
+
+function checkEntries() {
+  if (data.entries.length === 0) {
+    $noEntries.classList.remove('hidden');
+  } else {
+    $noEntries.classList.add('hidden');
+  }
+}
+
+$ul.addEventListener('click', function (event) {
+  if (event.target.tagName !== 'I') return;
+  $entryForm.classList.remove('hidden');
+  $entries.classList.add('hidden');
+  $newEdittext.textContent = 'Edit Entry';
+
+  var id = event.target.closest('li').getAttribute('data-entry-id');
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (Number(id) === data.entries[i].entryId) {
+      data.editing = data.entries[i];
+
+      $title.value = data.editing.title;
+      $url.value = data.editing.url;
+      $img.setAttribute('src', data.editing.url);
+      $notes.value = data.editing.notes;
+    }
+  }
 });
