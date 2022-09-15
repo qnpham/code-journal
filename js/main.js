@@ -11,6 +11,7 @@ var $entriesNav = document.querySelector('#entries-nav');
 var $noEntries = document.querySelector('#no-entries');
 var $newEdittext = document.querySelector('#new-edit-entry');
 var $delete = document.querySelector('#delete');
+var $modal = document.querySelector('.modal');
 $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
@@ -149,4 +150,8 @@ $ul.addEventListener('click', function (event) {
       $notes.value = data.editing.notes;
     }
   }
+});
+
+$delete.addEventListener('click', function (event) {
+  $modal.classList.remove('hidden');
 });

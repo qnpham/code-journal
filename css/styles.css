@@ -152,6 +152,48 @@ i {
   padding: 0;
 }
 
+.background {
+  opacity: 0.7;
+  height: 100vh;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.modal-content {
+  position: fixed;
+  opacity: 100%;
+  width: 20rem;
+  height: 7rem;
+  background-color: white;
+  color: black;
+  z-index: 1;
+  border-radius: 5px;
+  text-align: center;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+}
+
+#cancel {
+  color: #292929;
+  background-color: #b6b6b6;
+  padding: 0.35rem;
+  border-radius: 5px;
+}
+
+#confirm {
+  background-color: #dc2625;
+  color: white;
+  padding: 0.35rem;
+  border-radius: 5px;
+}
+
+header .column-half {
+  width: 160px;
+}
+
 @media only screen and (min-width: 768px) {
   .title {
     padding-top: 0;
