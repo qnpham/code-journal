@@ -80,7 +80,8 @@ input {
   height: 1.35rem;
   padding-top: 4px;
   border-radius: 3px;
-  float: right;
+  float: righst;
+  display: inline;
 }
 
 textarea {
@@ -148,10 +149,6 @@ i {
   padding: 0;
 }
 
-.no-padding {
-  padding: 0;
-}
-
 .background {
   opacity: 0.7;
   height: 100vh;
@@ -192,14 +189,6 @@ i {
   padding: 0.35rem;
   border-radius: 5px;
   float: right;
-}
-
-.display-inline {
-  display: inline;
-}
-
-header .column-half {
-  width: 160px;
 }
 
 #modal-text {
