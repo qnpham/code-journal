@@ -13,14 +13,6 @@ $url.addEventListener('input', function (event) {
   $img.setAttribute('src', $url.value);
 });
 
-function checkEntries() {
-  if (data.entries.length === 0) {
-    $noEntries.classList.remove('hidden');
-  } else if (data.entries.length > 0) {
-    $noEntries.classList.add('hidden');
-  }
-}
-
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
   var entry = {
@@ -124,6 +116,14 @@ $entriesNav.addEventListener('click', function () {
   data.view = 'entries';
   checkEntries();
 });
+
+function checkEntries() {
+  if (data.entries.length === 0) {
+    $noEntries.classList.remove('hidden');
+  } else if (data.entries.length > 0) {
+    $noEntries.classList.add('hidden');
+  }
+}
 
 $ul.addEventListener('click', function (event) {
   if (event.target.tagName !== 'I') return;
